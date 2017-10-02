@@ -4,16 +4,17 @@ require(['jquery'], function($) {
         this.$input = (this.widget.find('textarea').length > 0) ? this.widget.find('textarea') : this.widget.find('input');
         this.countSpan = null;
         this.maxLength = parseInt(this.widget.data('max-length'));
+        this.message = undefined !== this.widget.data('message') ? this.widget.data('message') : 'Symbols left:';
+        this.offset = undefined !== this.widget.data('offset') ? this.widget.data('offset') : 15;
 
         this.init = function() {
             var pos = this.$input.position();
-            var offset = undefined !== this.widget.data('offset') ? this.widget.data('offset') : 15;
             this.$input.after('<span></span>');
             this.countSpan = this.widget.find('span');
-            this.countSpan.text('Осталось сиволов: ' + this.maxLength);
+            this.countSpan.text(this.message + ' ' + this.maxLength);
             this.countSpan.css({
                 position: "absolute",
-                top: (pos.top - offset) + "px",
+                top: (pos.top - this.offset) + "px",
                 right: 0,
                 fontSize: 12 + "px",
                 color: '#808080',
@@ -23,7 +24,7 @@ require(['jquery'], function($) {
         this.update = function(event) {
             var len = $(event.target).val().length;
             var text = $(event.target).val();
-            $(this.countSpan).text('Осталось сиволов: ' + (this.maxLength - len));
+            $(this.countSpan).text(this.message + (this.maxLength - len));
             $(event.target).val(text.slice(0, this.maxLength - 1));
         };
 
