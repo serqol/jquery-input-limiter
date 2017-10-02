@@ -24,7 +24,7 @@ require(['jquery'], function($) {
         this.update = function(event) {
             var len = $(event.target).val().length;
             var text = $(event.target).val();
-            $(this.countSpan).text(this.message + (this.maxLength - len));
+            $(this.countSpan).text(this.message + ' ' + (this.maxLength - len));
             $(event.target).val(text.slice(0, this.maxLength - 1));
         };
 
