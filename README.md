@@ -9,6 +9,7 @@ Options:
 2. data-message (optional, message displayed above the input, showing how much symbols are left for input, default: "Symbols left:");
 3. data-offset (optional, span offset relative to its neighbor input, default: 15);
 
+![alt text](https://raw.githubusercontent.com/serqol/jquery-input-limiter/master/example.png)
 
 ```
 <div class="countable-wrapper" data-max-length="25">
