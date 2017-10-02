@@ -7,12 +7,13 @@ require(['jquery'], function($) {
 
         this.init = function() {
             var pos = this.$input.position();
+            var offset = undefined !== this.widget.data('offset') ? this.widget.data('offset') : 15;
             this.$input.after('<span></span>');
             this.countSpan = this.widget.find('span');
             this.countSpan.text('Осталось сиволов: ' + this.maxLength);
             this.countSpan.css({
                 position: "absolute",
-                top: (pos.top - 25) + "px",
+                top: (pos.top - offset) + "px",
                 right: 0,
                 fontSize: 12 + "px",
                 color: '#808080',
