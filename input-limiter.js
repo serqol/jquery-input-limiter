@@ -5,7 +5,8 @@ require(['jquery'], function($) {
         this.countSpan = null;
         this.maxLength = parseInt(this.widget.data('max-length'));
         this.message = undefined !== this.widget.data('message') ? this.widget.data('message') : 'Symbols left:';
-        this.offset = undefined !== this.widget.data('offset') ? this.widget.data('offset') : 15;
+        this.yOffset = undefined !== this.widget.data('y-offset') ? this.widget.data('y-offset') : 15;
+        this.xOffset = undefined !== this.widget.data('x-offset') ? this.widget.data('x-offset') : 5;
 
         this.init = function() {
             var pos = this.$input.position();
@@ -14,8 +15,8 @@ require(['jquery'], function($) {
             this.countSpan.text(this.message + ' ' + this.maxLength);
             this.countSpan.css({
                 position: "absolute",
-                top: (pos.top - this.offset) + "px",
-                right: 0,
+                top: (pos.top - this.yOffset) + "px",
+                right: this.xOffset + 'px',
                 fontSize: 12 + "px",
                 color: '#808080',
             });
